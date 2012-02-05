@@ -1,14 +1,11 @@
 
 ############################################################################################################
 $                         = exports ? here
-self                      = ( fetch 'library/barista' ).foo __filename
-log                       = self.log
-log_ruler                 = self.log_ruler
-stop                      = self.STOP
 _   = $._                 = {}
-$.$ = $$                  = {}
 #-----------------------------------------------------------------------------------------------------------
 
+
+SORRY this code should work but doesn't after a little refactoring. I'll be back.
 
 #-----------------------------------------------------------------------------------------------------------
 make_class = ( map ) ->
@@ -17,13 +14,13 @@ make_class = ( map ) ->
   return R
 
 #-----------------------------------------------------------------------------------------------------------
-compose = ( pedigree... ) ->
-  validate_argument_count arguments, 'min': 1
+$.compose = ( pedigree... ) ->
+  # validate_argument_count arguments, 'min': 1 # this is from the FlowMatic library
   return _.compose pedigree, true
 
 #-----------------------------------------------------------------------------------------------------------
-complement = ( pedigree... ) ->
-  validate_argument_count arguments, 'min': 1
+$.complement = ( pedigree... ) ->
+  # validate_argument_count arguments, 'min': 1 # this is from the FlowMatic library
   return _.compose pedigree, false
 
 #-----------------------------------------------------------------------------------------------------------
@@ -31,13 +28,10 @@ _.compose = ( pedigree, allow_overrides ) ->
   progenitor  = {}
   seen_names  = if allow_overrides then null else {}
   #.........................................................................................................
-  for idx in [ 0 ... length_of pedigree ]
-    log_ruler()
+  for idx in [ 0 ... pedigree.length ]
     ancestor = pedigree[ idx ]
     ancestor = ancestor[ '~MIXIN/%self' ] ? ancestor
     #.......................................................................................................
-    # for name of ancestor
-      # continue unless descriptor?
     for name in Object.keys ancestor
       #.....................................................................................................
       if not allow_overrides
@@ -60,50 +54,13 @@ _.compose = ( pedigree, allow_overrides ) ->
   return new ( make_class progenitor )()
 
 #-----------------------------------------------------------------------------------------------------------
-set = ( x, name, value ) ->
+$.set_property = ( target, name, Q ) ->
+  # Q[ 'enumerable' ] ?= yes
+  Object.defineProperty target, name, Q
+  return null
+
+#-----------------------------------------------------------------------------------------------------------
+$.set = ( x, name, value ) ->
+  """Experimental; sets a value on a mixin without producing a new instance (as ``compose`` would)."""
   ( Object.getPrototypeOf x )[ name ] = value
-
-
-x = {}
-x.move = ( meters ) ->
-  echo green @name + " moved #{meters}m."
-x.speak = -> echo red "#{@name} says: 'miew'"
-
-y = {}
-y.speak = -> echo red "#{@name} says: 'yee-hah'"
-
-set_property y, 'random',
-  get: -> log cyan @name; return random_integer 0, 10000
-
-x = compose x, y
-set x, 'name', 'Sammy'
-
-log x
-x.move 2
-x.speak()
-echo x.random
-echo x.random
-echo x.random
-
-z = {}
-z.f = ( x ) -> return x + 42
-# z.name = 'foobar'
-x = complement x, z
-log x.f 1234
-x.move 2
-x.speak()
-echo x.random
-echo x.random
-
-
-
-
-
-
-
-
-
-
-
-
 
