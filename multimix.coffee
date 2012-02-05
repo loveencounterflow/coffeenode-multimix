@@ -7,6 +7,8 @@ _   = $._                 = {}
 
 SORRY this code should work but doesn't after a little refactoring. I'll be back.
 
+Also, must define / replace ``bye``.
+
 #-----------------------------------------------------------------------------------------------------------
 make_class = ( map ) ->
   R = ->
