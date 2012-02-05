@@ -1,12 +1,15 @@
 
 
-.. image:: https://github.com/loveencounterflow/FLOWMATIC/raw/master/artwork/flowmatic-logo-4a.png
+.. image:: https://github.com/loveencounterflow/MULTIMIX/raw/master/artwork/multimix-small.png
    :align: left
 
-The Mythical Next Beast.
+
 
 TL;DR
 ============================================================================================================
+
+Classes and prototypes are sooooo 1990s. Mixins FTW!
+
 
 This document is mainly here to instill the illusion of meaningful content. Today i managed to reactivate my GitHub account, only to plunge into a session of thought-oozing, the output of which fills the rest of this page. I hope it is not before long that i will be able to post working code to this site, as basic parsing is already working quite well. Y'know, this beast is gonna have, like, inheritable, modularized grammars, using, like, traits, slash, mixins—? Which took me close to two weeks or so to implement (hopefully) correctly. The result of that work is dubbed multimix_. Don't be afraid, it won't bite, and is actually "an extremely useful, simplistic yet feature-complete (i believe) approach to, like, inheritance the painless way, anyone?" (at least that's what the blurb says).
 
@@ -14,6 +17,8 @@ This document is mainly here to instill the illusion of meaningful content. Toda
 
 WTF?
 ============================================================================================================
+
+When researching for a Better Way to do implement a compositional architecture for the
 
 Like SillyPutty, but not as brittle. Like Perl, but less cryptic. Like Python, but sans the Batteries, and less braces. Or, like, braces all over the place, if it's that what you want. Like CoffeeScript, but with a sound dose of identity crisis. Like Brainfuck, but completely different. An exploratorium for programming language lovers. Touch it the right way and enjoy the purr. Touch it the wrong way and watch it bitching and crashing. Awesome.
 
