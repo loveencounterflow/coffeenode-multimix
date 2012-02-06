@@ -5,9 +5,8 @@ _   = $._                 = {}
 #-----------------------------------------------------------------------------------------------------------
 
 
-# SORRY this code should work but doesn't after a little refactoring. I'll be back.
-
-# Also, must define / replace ``bye``.
+# STATUS: tests have NOT passed
+# port ``multimix-CND`` to plain CoffeeScript if you need to use this code right now
 
 #-----------------------------------------------------------------------------------------------------------
 make_class = ( map ) ->
