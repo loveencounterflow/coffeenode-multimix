@@ -168,7 +168,3 @@ log horse_cat.horse_count
 
 
 
-
-
-
-
