@@ -1,4 +1,8 @@
 
+
+# STATUS: tests have NOT passed
+
+
 ############################################################################################################
 $                         = exports ? here
 self                      = ( fetch '/COFFEENODE/flow/library/barista' ).foo __filename
