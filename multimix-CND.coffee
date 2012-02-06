@@ -66,11 +66,11 @@ set = ( x, name, value ) ->
 
 
 ############################################################################################################
-get_counter = ( species ) ->
-  count = 0
-  return ->
-    count += 1
-    return "#{@name} has #{species}-counted to #{count}"
+$.set_property = ( target, name, Q ) ->
+  """Like ``Object.defineProperty``, but ``enumerable`` defaults to ``yes``."""
+  Q[ 'enumerable' ] ?= yes
+  Object.defineProperty target, name, Q
+  return null
 
 #===========================================================================================================
 cat = {}
@@ -84,8 +84,12 @@ cat.speak = ->
   return "#{@name} says: 'miew'"
 
 #-----------------------------------------------------------------------------------------------------------
-# Object.defineProperty cat, 'cat_count', get: get_counter 'cat'
-Object.defineProperty cat, 'cat_count', get: -> return new Date() / 1
+set_property cat, 'cat_count',
+  get: ->
+    @cat_counter ?= 0
+    @cat_counter += 1
+    return "#{@name} has cat-counted to #{@cat_counter}"
+
 
 #===========================================================================================================
 horse = {}
@@ -95,7 +99,12 @@ horse.speak = ->
   return "#{@name} says: 'yee-hah'"
 
 #-----------------------------------------------------------------------------------------------------------
-Object.defineProperty horse, 'horse_count', get: get_counter 'horse'
+set_property horse, 'horse_count',
+  get: ->
+    @horse_counter ?= 0
+    @horse_counter += 1
+    return "#{@name} has horse-counted to #{@horse_counter}"
+
 
 #===========================================================================================================
 cat       = compose cat,        'name': 'Cat'
@@ -120,6 +129,12 @@ log cat.cat_count
 log horse.cat_count
 log cat_horse.cat_count
 log horse_cat.cat_count
+
+log '---------------------------------------'
+log cat.horse_count
+log horse.horse_count
+log cat_horse.horse_count
+log horse_cat.horse_count
 
 log '---------------------------------------'
 log cat.horse_count
