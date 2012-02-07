@@ -1,12 +1,5 @@
 
-############################################################################################################
-$                         = exports ? here
-_   = $._                 = {}
-#-----------------------------------------------------------------------------------------------------------
 
-
-# STATUS: tests have NOT passed
-# port ``multimix-CND`` to plain CoffeeScript if you need to use this code right now
 
 #-----------------------------------------------------------------------------------------------------------
 make_class = ( map ) ->
@@ -16,12 +9,10 @@ make_class = ( map ) ->
 
 #-----------------------------------------------------------------------------------------------------------
 $.compose = ( pedigree... ) ->
-  # validate_argument_count arguments, 'min': 1 # this is from the FlowMatic library
   return _.compose pedigree, true
 
 #-----------------------------------------------------------------------------------------------------------
-$.complement = ( pedigree... ) ->
-  # validate_argument_count arguments, 'min': 1 # this is from the FlowMatic library
+$.assemble = ( pedigree... ) ->
   return _.compose pedigree, false
 
 #-----------------------------------------------------------------------------------------------------------
@@ -37,14 +28,14 @@ _.compose = ( pedigree, allow_overrides ) ->
       #.....................................................................................................
       if not allow_overrides
         if seen_names[ name ]
-          bye "encountered duplicate name #{rpr name}; use ``compose`` instead of ``complement`` " + \
-            "to allow for this"
+          throw new Error "encountered duplicate name #{rpr name}; use ``compose`` instead of " + \
+            "``assemble`` to allow for this"
         seen_names[ name ] = true
       #.....................................................................................................
       descriptor = Object.getOwnPropertyDescriptor ancestor, name
       #.....................................................................................................
       if descriptor.get? or descriptor.set?
-        set_property progenitor, name,
+        $.set_property progenitor, name,
           get: descriptor.get
           set: descriptor.set
       #.....................................................................................................
@@ -55,13 +46,13 @@ _.compose = ( pedigree, allow_overrides ) ->
   return new ( make_class progenitor )()
 
 #-----------------------------------------------------------------------------------------------------------
+$.set = ( x, name, value ) ->
+  """Experimental; sets a value on a mixin without producing a new instance (as ``compose`` would)."""
+  ( Object.getPrototypeOf x )[ name ] = value
+
+#-----------------------------------------------------------------------------------------------------------
 $.set_property = ( target, name, Q ) ->
   # Q[ 'enumerable' ] ?= yes
   Object.defineProperty target, name, Q
   return null
-
-#-----------------------------------------------------------------------------------------------------------
-$.set = ( x, name, value ) ->
-  """Experimental; sets a value on a mixin without producing a new instance (as ``compose`` would)."""
-  ( Object.getPrototypeOf x )[ name ] = value
 
