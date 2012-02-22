@@ -182,7 +182,7 @@ attribute or a property (that's very important to know when copying attributesâ€
 this detail you'll turn dynamic properties into static attributes (which is sometimes exactly right to be
 sure (more braces, anyone?)))?
 
-Well, JavaScript offers ``Object.getOwnPropertyDescriptor x, name`` for retrieving attribute details[#]_. Of
+Well, JavaScript offers ``Object.getOwnPropertyDescriptor x, name`` for retrieving attribute details[#]_ . Of
 course, as the name implies, this method will *not* walk up the property chain, so you can still end up with
 confusing results.
 
