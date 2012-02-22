@@ -15,7 +15,7 @@ $.assemble  = ( pedigree... ) -> return @_compose_or_assemble pedigree, false
 
 #-----------------------------------------------------------------------------------------------------------
 $._compose_or_assemble = ( pedigree, allow_overrides ) ->
-  progenitor           = {}
+  R           = {}
   seen_names  = if allow_overrides then null else {}
   #.........................................................................................................
   for ancestor in pedigree
@@ -32,17 +32,19 @@ $._compose_or_assemble = ( pedigree, allow_overrides ) ->
       descriptor = Object.getOwnPropertyDescriptor ancestor, name
       #.....................................................................................................
       if descriptor.get? or descriptor.set?
-        @set_property progenitor, name,
+        @set_property R, name,
           descriptor.get
           descriptor.set
           'configurable': descriptor.configurable
           'enumerable':   descriptor.enumerable
       #.....................................................................................................
+      # else if isa_function descriptor.value
+      #   R[ name ] = ancestor[ name ].bind R
       else
-        progenitor[ name ] = ancestor[ name ]
+        R[ name ] = ancestor[ name ]
   #.........................................................................................................
-  progenitor[ '~MIXIN/%self' ] = progenitor
-  return new ( make_class progenitor )()
+  R[ '~MIXIN/%self' ] = R
+  return new ( make_class R )()
 
 #-----------------------------------------------------------------------------------------------------------
 $.set = ( x, name, value ) ->

@@ -40,20 +40,15 @@ MULTIMIX.set_property horse, 'horse_count', ->
 
 #===========================================================================================================
 $.main = ->
-  log rpr ( name for name of cat )
-  log rpr ( name for name of horse )
-  log rpr ( name for name of horse_cat )
-  log rpr ( name for name of cat_horse )
-
   cat       = MULTIMIX.compose cat,        'name': 'Cat'
   horse     = MULTIMIX.compose horse,      'name': 'Horse'
   cat_horse = MULTIMIX.compose cat, horse, 'name': 'Cathorse'
   horse_cat = MULTIMIX.compose horse, cat, 'name': 'Horsecat'
 
-  log rpr ( name for name of cat )
-  log rpr ( name for name of horse )
-  log rpr ( name for name of cat_horse )
-  log rpr ( name for name of horse_cat )
+  log ( name for name of cat )
+  log ( name for name of horse )
+  log ( name for name of cat_horse )
+  log ( name for name of horse_cat )
 
   log '---------------------------------------'
   log cat.name

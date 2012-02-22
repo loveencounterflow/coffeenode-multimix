@@ -51,8 +51,6 @@ MultiMix gives you:
 * two sensible methods to assemble a new object with new state from one or more source objects, enshrined as
   ``compose`` and ``assemble``;
 
-.. * all methods are explicitly bound to their o
-
 * hidden goodies—read on to learn more!
 
 The usual ill-conceived / conventionalized / silly OOP example where we pretend that objects in the computer
