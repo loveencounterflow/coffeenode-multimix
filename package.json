@@ -7,8 +7,11 @@
     "type" : "git",
     "url" : "http://github.com/loveencounterflow/COFFEENODE-MULTIMIX.git"
   },
-  "main": "./main.cmatic",
+  "main": "./main.coffee",
   "engines" : {
     "node" : ">= 0.10.0"
+  },
+  "dependencies": {
+    "coffeenode-types": "~0.1.0",
   }
 }
