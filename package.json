@@ -1,14 +1,14 @@
 {
-  "name" : "MULTIMIX",
-  "version" : "0.0.1",
+  "name" : "COFFEENODE-MULTIMIX",
+  "version" : "0.1.0",
   "description" : "Classes and prototypes are sooooo 1990s. Mixins FTW!",
   "author": "loveencounterflow <paragate@gmx.net>",
   "repository" : {
     "type" : "git",
-    "url" : "http://github.com/XXXXXXXXXXXXXX/ZZZZZZZZ.git"
+    "url" : "http://github.com/loveencounterflow/COFFEENODE-MULTIMIX.git"
   },
-  "main": "./MULTIMIX.coffee",
+  "main": "./main.cmatic",
   "engines" : {
-    "node" : ">= 0.4.0"
+    "node" : ">= 0.10.0"
   }
 }
