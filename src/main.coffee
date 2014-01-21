@@ -25,8 +25,7 @@ rpr                       = ( require 'util' ).inspect
       if not allow_overrides
         if seen_names[ name ]
           throw new Error """
-            encountered duplicate name #{rpr name}; use `compose instead of "
-            `assemble` to allow for this"""
+            encountered duplicate name #{rpr name}; use `compose instead of `assemble` to allow for this"""
         seen_names[ name ] = true
       #.....................................................................................................
       descriptor = @get_descriptor ancestor, name
@@ -130,10 +129,23 @@ rpr                       = ( require 'util' ).inspect
   #.........................................................................................................
   throw new Error "programming error; should never happen"
 
+# #...........................................................................................................
+# @_get_descriptor = ( x, name ) ->
+#   loop
+#     R = Object.getOwnPropertyDescriptor x, name
+#     return R if R?
+#     x = Object.getPrototypeOf x
+
 #...........................................................................................................
 @_get_descriptor = ( x, name ) ->
   loop
-    R = Object.getOwnPropertyDescriptor x, name
+    try
+      R = Object.getOwnPropertyDescriptor x, name
+    catch error
+      ### patched for compatibility with https://github.com/tvcutsem/harmony-reflect ###
+      if error[ 'message' ] == 'Invalid value used as weak map key'
+        throw new Error 'Object.getOwnPropertyDescriptor called on non-object'
+      throw Error
     return R if R?
     x = Object.getPrototypeOf x
 

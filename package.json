@@ -1,17 +1,35 @@
 {
-  "name" : "COFFEENODE-MULTIMIX",
-  "version" : "0.1.0",
-  "description" : "Classes and prototypes are sooooo 1990s. Mixins FTW!",
-  "author": "loveencounterflow <paragate@gmx.net>",
-  "repository" : {
-    "type" : "git",
-    "url" : "http://github.com/loveencounterflow/COFFEENODE-MULTIMIX.git"
+  "name": "coffeenode-multimix",
+  "version": "0.1.1",
+  "description": "Classes and prototypes are sooooo 1990s. Mixins FTW!",
+  "author": {
+    "name": "loveencounterflow",
+    "email": "paragate@gmx.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/loveencounterflow/coffeenode-multimix.git"
   },
   "main": "./main.coffee",
-  "engines" : {
-    "node" : ">= 0.10.0"
+  "engines": {
+    "node": ">= 0.10.0"
   },
   "dependencies": {
-    "coffeenode-types": "~0.1.0",
-  }
+    "coffee-script": "~1.6.3",
+    "coffeenode-types": "~0.1.0"
+  },
+  "larq": {
+    "extensions": {},
+    "compile-statements": {},
+    "%cache": {
+      "routes": {
+        "lib/main.js": 1
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/loveencounterflow/coffeenode-multimix/issues"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "coffeenode-multimix@0.1.0"
 }
