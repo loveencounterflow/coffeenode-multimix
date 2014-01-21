@@ -1,6 +1,6 @@
 {
   "name": "coffeenode-multimix",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Classes and prototypes are sooooo 1990s. Mixins FTW!",
   "author": {
     "name": "loveencounterflow",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "http://github.com/loveencounterflow/coffeenode-multimix.git"
   },
-  "main": "./main.coffee",
+  "main": "./lib/main.js",
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -31,5 +31,5 @@
     "url": "https://github.com/loveencounterflow/coffeenode-multimix/issues"
   },
   "readme": "ERROR: No README data found!",
-  "_id": "coffeenode-multimix@0.1.1"
+  "_id": "coffeenode-multimix@0.1.2"
 }
